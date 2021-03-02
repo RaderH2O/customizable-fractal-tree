@@ -8,24 +8,22 @@ function setup() {
     createCanvas(800, 500);
     angleSlider = createSlider(0.01, TWO_PI, PI/8, 0.01);
     lengthSlider = createSlider(10, 300, 150, 1);
-    maxLengthSlider = createSlider(1, 500, 4, 0.1);
+    maxLengthSlider = createSlider(4, 10, 4, 0.1);
 }
 
 function draw() {
     background(0);
     angle = angleSlider.value();
     branchLength = lengthSlider.value();
-    maxLength = maxLengthSlider.value();
+    maxLength = map(maxLengthSlider.value(), 4, 10, 50, 4);
     translate(width/2, height);
     stroke(255);
     strokeWeight(1);
     branch(branchLength, 10);
-    //branch(branchLength * 0.67);
 }
 
 function branch(len, stroke) {
     strokeWeight(stroke);
-    //line(0, 0, 0, -len);
     noFill();
     line(0, 0, 0, -len);
     translate(0, -len);
